@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>To-Do List</title>
+  <style>
+    .done { text-decoration: line-through; }
+  </style>
+</head>
+<body>
+  <h1>My To-Do List</h1>
+  <input type="text" id="taskInput" placeholder="New task here">
+  <button id="addTaskBtn">Add Task</button>
+  <ul id="taskList"></ul>
+
+  <script>
+    const taskInput = document.getElementById("taskInput");
+    const addTaskBtn = document.getElementById("addTaskBtn");
+    const taskList = document.getElementById("taskList");
+
+    // Function to add a new task
+    function addTask() {
+      const taskText = taskInput.value;
+      if (taskText === "") return;
+
+      // Create new list item
+      const li = document.createElement("li");
+      li.textContent = taskText;
+
+      // Toggle completion on click
+      li.addEventListener("click", function() {
+        li.classList.toggle("done");
+      });
+
+      taskList.appendChild(li);
+      taskInput.value = "";
+    }
+
+    // Add task on button click
+    addTaskBtn.addEventListener("click", addTask);
+  </script>
+</body>
+</html>
+
+
